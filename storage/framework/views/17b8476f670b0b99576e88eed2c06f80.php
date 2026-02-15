@@ -3,134 +3,120 @@
 <?php $__env->startSection('title', $book->title); ?>
 
 <?php $__env->startSection('content'); ?>
-<div class="row">
-    <div class="col-md-8">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo e(route('home')); ?>">Home</a></li>
-                <li class="breadcrumb-item"><a href="<?php echo e(route('books.index')); ?>">Books</a></li>
-                <li class="breadcrumb-item active"><?php echo e($book->title); ?></li>
+<div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden">
+    <!-- Breadcrumb -->
+    <div class="px-6 py-4 border-b border-gray-100 bg-gray-50">
+        <nav class="flex text-sm text-gray-500" aria-label="Breadcrumb">
+            <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                <li class="inline-flex items-center">
+                    <a href="<?php echo e(route('home')); ?>" class="hover:text-primary transition">Home</a>
+                </li>
+                <li><i class="fas fa-chevron-right text-xs text-gray-400"></i></li>
+                <li>
+                    <a href="<?php echo e(route('books.index')); ?>" class="hover:text-primary transition">Books</a>
+                </li>
+                <li><i class="fas fa-chevron-right text-xs text-gray-400"></i></li>
+                <li aria-current="page">
+                    <span class="text-gray-900 font-medium truncate max-w-xs block"><?php echo e($book->title); ?></span>
+                </li>
             </ol>
         </nav>
+    </div>
 
-        <div class="card">
-            <?php if($book->image): ?>
-                <img src="<?php echo e(asset('storage/' . $book->image)); ?>" class="card-img-top" alt="<?php echo e($book->title); ?>">
-            <?php else: ?>
-                <div class="card-img-top bg-secondary text-white d-flex align-items-center justify-content-center" style="height: 400px;">
-                    <i class="fas fa-book fa-5x"></i>
-                </div>
-            <?php endif; ?>
-            
-            <div class="card-body">
-                <h1 class="card-title"><?php echo e($book->title); ?></h1>
-                <h5 class="text-muted mb-3">by <?php echo e($book->author); ?></h5>
-                
-                <div class="mb-3">
-                    <span class="badge bg-primary"><?php echo e($book->category->name); ?></span>
-                    <?php if($book->isbn): ?>
-                        <span class="badge bg-secondary">ISBN: <?php echo e($book->isbn); ?></span>
+    <div class="p-6 lg:p-10">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+            <!-- Product Image -->
+            <div class="relative">
+                <div class="aspect-w-3 aspect-h-4 bg-gray-100 rounded-lg overflow-hidden shadow-inner">
+                    <?php if($book->image): ?>
+                        <img src="<?php echo e(asset('storage/' . $book->image)); ?>" class="w-full h-full object-cover object-center transform transition duration-500 hover:scale-105" alt="<?php echo e($book->title); ?>">
+                    <?php else: ?>
+                        <div class="w-full h-full flex items-center justify-center bg-gray-100 text-gray-400">
+                            <i class="fas fa-book fa-9x text-gray-300"></i>
+                        </div>
                     <?php endif; ?>
                 </div>
+                
+                <div class="absolute top-4 left-4">
+                     <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-white text-gray-800 shadow-md">
+                        <?php echo e($book->category->name); ?>
 
-                <h3 class="text-success mb-3">$<?php echo e(number_format($book->price, 2)); ?></h3>
+                    </span>
+                </div>
+            </div>
 
-                <div class="mb-3">
+            <!-- Product Details -->
+            <div class="flex flex-col h-full">
+                <h1 class="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight mb-2"><?php echo e($book->title); ?></h1>
+                <p class="text-lg text-gray-600 mb-6">by <span class="font-semibold text-gray-800"><?php echo e($book->author); ?></span></p>
+
+                <div class="flex items-center mb-6">
+                    <span class="text-3xl font-bold text-primary mr-4">$<?php echo e(number_format($book->price, 2)); ?></span>
+                    
                     <?php if($book->isInStock()): ?>
-                        <span class="badge bg-success">
-                            <i class="fas fa-check-circle"></i> In Stock (<?php echo e($book->stock); ?> available)
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                            <i class="fas fa-check-circle mr-1.5"></i> In Stock (<?php echo e($book->stock); ?> available)
                         </span>
                     <?php else: ?>
-                        <span class="badge bg-danger">
-                            <i class="fas fa-times-circle"></i> Out of Stock
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                            <i class="fas fa-times-circle mr-1.5"></i> Out of Stock
                         </span>
                     <?php endif; ?>
                 </div>
 
-                <?php if($book->description): ?>
-                    <h5 class="mt-4">Description</h5>
-                    <p class="card-text"><?php echo e($book->description); ?></p>
-                <?php endif; ?>
+                <div class="border-t border-b border-gray-100 py-6 mb-6">
+                    <div class="prose prose-sm text-gray-600 max-w-none">
+                        <h3 class="text-lg font-bold text-gray-900 mb-2">Description</h3>
+                        <p><?php echo e($book->description ?? 'No description available.'); ?></p>
+                    </div>
+                </div>
 
-                <div class="mt-4">
+                <div class="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-gray-600 mb-8">
+                    <?php if($book->isbn): ?>
+                        <div class="font-medium">ISBN:</div>
+                        <div><?php echo e($book->isbn); ?></div>
+                    <?php endif; ?>
+                    <div class="font-medium">Category:</div>
+                    <div><?php echo e($book->category->name); ?></div>
+                </div>
+
+                <div class="mt-auto">
                     <?php if(auth()->guard()->check()): ?>
                         <?php if($book->isInStock()): ?>
-                            <form action="<?php echo e(route('cart.add', $book)); ?>" method="POST" class="d-inline">
+                            <form action="<?php echo e(route('cart.add', $book)); ?>" method="POST">
                                 <?php echo csrf_field(); ?>
-                                <button type="submit" class="btn btn-success btn-lg">
-                                    <i class="fas fa-shopping-cart"></i> Add to Cart
+                                <button type="submit" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-primary hover:bg-indigo-700 md:py-4 md:text-lg shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                                    <i class="fas fa-shopping-cart mr-2"></i> Add to Cart
                                 </button>
                             </form>
                         <?php else: ?>
-                            <button class="btn btn-secondary btn-lg" disabled>
-                                <i class="fas fa-ban"></i> Out of Stock
+                            <button type="button" disabled class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-gray-400 bg-gray-100 cursor-not-allowed md:py-4 md:text-lg">
+                                <i class="fas fa-ban mr-2"></i> Currently Unavailable
                             </button>
                         <?php endif; ?>
                     <?php else: ?>
-                        <a href="<?php echo e(route('login')); ?>" class="btn btn-primary btn-lg">
-                            <i class="fas fa-sign-in-alt"></i> Login to Purchase
+                        <a href="<?php echo e(route('login')); ?>" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-800 hover:bg-gray-900 md:py-4 md:text-lg shadow transition">
+                            <i class="fas fa-lock mr-2"></i> Login to Purchase
                         </a>
                     <?php endif; ?>
                     
-                    <a href="<?php echo e(route('books.index')); ?>" class="btn btn-outline-secondary btn-lg">
-                        <i class="fas fa-arrow-left"></i> Back to Books
+                    <a href="<?php echo e(route('books.index')); ?>" class="block text-center mt-4 text-sm text-gray-500 hover:text-gray-900 transition">
+                        &larr; Back to all books
                     </a>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="col-md-4">
-        <div class="card mb-3">
-            <div class="card-header">
-                <h5 class="mb-0">Book Details</h5>
-            </div>
-            <div class="card-body">
-                <table class="table table-sm">
-                    <tr>
-                        <th>Author:</th>
-                        <td><?php echo e($book->author); ?></td>
-                    </tr>
-                    <tr>
-                        <th>Category:</th>
-                        <td><?php echo e($book->category->name); ?></td>
-                    </tr>
-                    <tr>
-                        <th>Price:</th>
-                        <td class="text-success">$<?php echo e(number_format($book->price, 2)); ?></td>
-                    </tr>
-                    <?php if($book->isbn): ?>
-                    <tr>
-                        <th>ISBN:</th>
-                        <td><?php echo e($book->isbn); ?></td>
-                    </tr>
-                    <?php endif; ?>
-                    <tr>
-                        <th>Availability:</th>
-                        <td>
-                            <?php if($book->isInStock()): ?>
-                                <span class="text-success">In Stock</span>
-                            <?php else: ?>
-                                <span class="text-danger">Out of Stock</span>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+<div class="mt-12">
+    <h3 class="text-2xl font-bold text-gray-900 mb-6">Related Books</h3>
+    <div class="bg-indigo-50 rounded-xl p-8 text-center border border-indigo-100">
+        <p class="text-indigo-800 mb-4">Want to see more books in <span class="font-bold"><?php echo e($book->category->name); ?></span>?</p>
+        <a href="<?php echo e(route('books.index', ['category' => $book->category_id])); ?>" class="inline-flex items-center px-4 py-2 border border-indigo-600 rounded-md shadow-sm text-sm font-medium text-indigo-600 bg-white hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition">
+            Browse <?php echo e($book->category->name); ?>
 
-        <div class="card">
-            <div class="card-header">
-                <h5 class="mb-0">More from <?php echo e($book->category->name); ?></h5>
-            </div>
-            <div class="card-body">
-                <p class="text-muted">
-                    <a href="<?php echo e(route('books.index', ['category' => $book->category_id])); ?>">
-                        Browse more <?php echo e($book->category->name); ?> books
-                    </a>
-                </p>
-            </div>
-        </div>
+        </a>
     </div>
 </div>
 <?php $__env->stopSection(); ?>
