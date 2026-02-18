@@ -18,6 +18,39 @@
                         <?php echo csrf_field(); ?>
                         
                         <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-3">Payment Method</label>
+                            <div class="space-y-3">
+                                <div class="flex items-center p-4 border-2 border-primary bg-primary bg-opacity-5 rounded-lg">
+                                    <input id="cod" name="payment_method" type="radio" value="cash_on_delivery" checked
+                                        class="h-4 w-4 text-primary focus:ring-primary border-gray-300">
+                                    <label for="cod" class="ml-3 flex-1 cursor-pointer">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <span class="block text-sm font-medium text-gray-900">Cash on Delivery</span>
+                                                <span class="block text-sm text-gray-500">Pay when you receive your order</span>
+                                            </div>
+                                            <i class="fas fa-money-bill-wave text-2xl text-primary"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                                <div class="flex items-center p-4 border-2 border-gray-200 rounded-lg opacity-50 cursor-not-allowed">
+                                    <input id="online" name="payment_method" type="radio" value="online_payment" disabled
+                                        class="h-4 w-4 text-gray-400 border-gray-300">
+                                    <label for="online" class="ml-3 flex-1">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <span class="block text-sm font-medium text-gray-500">Online Payment</span>
+                                                <span class="block text-sm text-gray-400">Coming Soon</span>
+                                            </div>
+                                            <i class="fas fa-credit-card text-2xl text-gray-400"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
                             <label for="shipping_address" class="block text-sm font-medium text-gray-700 mb-1">Shipping Address</label>
                             <textarea id="shipping_address" name="shipping_address" rows="4" required
                                 class="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 <?php $__errorArgs = ['shipping_address'];
@@ -41,24 +74,11 @@ unset($__errorArgs, $__bag); ?>
                             <p class="mt-2 text-sm text-gray-500">Please provide your complete shipping address including zip code.</p>
                         </div>
 
-                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-info-circle text-blue-400"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm text-blue-700">
-                                        <strong>Note:</strong> This is a demo application. No actual payment will be processed.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="flex items-center justify-between pt-4 border-t border-gray-100">
                             <a href="<?php echo e(route('cart.index')); ?>" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition">
                                 <i class="fas fa-arrow-left mr-1"></i> Back to Cart
                             </a>
-                            <button type="submit" class="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition shadow-lg transform hover:-translate-y-0.5">
+                            <button type="submit" class="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition shadow-lg">
                                 <i class="fas fa-check mr-2"></i> Place Order
                             </button>
                         </div>

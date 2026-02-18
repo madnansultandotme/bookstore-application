@@ -16,6 +16,7 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Author</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
@@ -29,6 +30,17 @@
                     <tr class="hover:bg-gray-50 transition">
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             {{ $book->id }}
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex-shrink-0 h-16 w-12">
+                                @if($book->image)
+                                    <img src="{{ asset('storage/' . $book->image) }}" alt="{{ $book->title }}" class="h-16 w-12 object-cover rounded shadow-sm">
+                                @else
+                                    <div class="h-16 w-12 bg-gray-200 rounded flex items-center justify-center">
+                                        <i class="fas fa-book text-gray-400"></i>
+                                    </div>
+                                @endif
+                            </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                             {{ $book->title }}

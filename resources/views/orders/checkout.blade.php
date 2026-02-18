@@ -60,19 +60,6 @@
                             <p class="mt-2 text-sm text-gray-500">Please provide your complete shipping address including zip code.</p>
                         </div>
 
-                        <div class="bg-blue-50 border-l-4 border-blue-400 p-4 mb-6">
-                            <div class="flex">
-                                <div class="flex-shrink-0">
-                                    <i class="fas fa-info-circle text-blue-400"></i>
-                                </div>
-                                <div class="ml-3">
-                                    <p class="text-sm text-blue-700">
-                                        <strong>Note:</strong> This is a demo application. No actual payment will be processed.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="flex items-center justify-between pt-4 border-t border-gray-100">
                             <a href="{{ route('cart.index') }}" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition">
                                 <i class="fas fa-arrow-left mr-1"></i> Back to Cart

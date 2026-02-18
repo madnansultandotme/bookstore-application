@@ -51,7 +51,7 @@
                 <p class="text-lg text-gray-600 mb-6">by <span class="font-semibold text-gray-800"><?php echo e($book->author); ?></span></p>
 
                 <div class="flex items-center mb-6">
-                    <span class="text-3xl font-bold text-primary mr-4">$<?php echo e(number_format($book->price, 2)); ?></span>
+                    <span class="text-3xl font-bold text-primary mr-4">Rs <?php echo e(number_format($book->price, 2)); ?></span>
                     
                     <?php if($book->isInStock()): ?>
                         <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">

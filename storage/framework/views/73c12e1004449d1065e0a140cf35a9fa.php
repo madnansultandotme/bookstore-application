@@ -16,6 +16,7 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
+                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Image</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Title</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Author</th>
                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
@@ -30,6 +31,17 @@
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                             <?php echo e($book->id); ?>
 
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex-shrink-0 h-16 w-12">
+                                <?php if($book->image): ?>
+                                    <img src="<?php echo e(asset('storage/' . $book->image)); ?>" alt="<?php echo e($book->title); ?>" class="h-16 w-12 object-cover rounded shadow-sm">
+                                <?php else: ?>
+                                    <div class="h-16 w-12 bg-gray-200 rounded flex items-center justify-center">
+                                        <i class="fas fa-book text-gray-400"></i>
+                                    </div>
+                                <?php endif; ?>
+                            </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                             <?php echo e($book->title); ?>
@@ -46,7 +58,7 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            $<?php echo e(number_format($book->price, 2)); ?>
+                            Rs <?php echo e(number_format($book->price, 2)); ?>
 
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm">
