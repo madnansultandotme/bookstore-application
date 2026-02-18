@@ -29,14 +29,16 @@ class CartController extends Controller
 
         if ($cartItem) {
             $cartItem->increment('quantity');
+            $message = "'{$book->title}' quantity updated in cart!";
         } else {
             $cart->items()->create([
                 'book_id' => $book->id,
                 'quantity' => 1,
             ]);
+            $message = "'{$book->title}' added to cart successfully!";
         }
 
-        return redirect()->back()->with('success', 'Book added to cart!');
+        return redirect()->back()->with('success', $message);
     }
 
     public function update(Request $request, CartItem $cartItem)

@@ -4,29 +4,32 @@
 
 <?php $__env->startSection('content'); ?>
 <!-- Hero Section -->
-<div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl shadow-2xl overflow-hidden mb-12">
-    <div class="px-6 py-16 sm:px-12 sm:py-24 lg:flex lg:items-center lg:justify-between">
-        <div class="lg:w-0 lg:flex-1">
+<div class="bg-primary rounded-lg shadow-lg overflow-hidden mb-12">
+    <div class="px-6 py-16 sm:px-12 sm:py-20 lg:flex lg:items-center lg:justify-between">
+        <div class="lg:w-1/2">
             <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
                 <span class="block">Welcome to</span>
-                <span class="block text-indigo-200">Pakistan's BookStore</span>
+                <span class="block mt-2">Pakistan's BookStore</span>
             </h1>
-            <p class="mt-5 text-xl text-indigo-100 max-w-3xl">
+            <p class="mt-6 text-xl text-white opacity-90 max-w-2xl">
                 Discover thousands of books at amazing prices. From bestsellers to hidden gems, find your next great read today!
             </p>
             <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                <a href="<?php echo e(route('books.index')); ?>" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">
+                <a href="<?php echo e(route('books.index')); ?>" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 shadow-lg transition">
                     Browse Books
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
-                <a href="<?php echo e(route('contact')); ?>" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-indigo-600 transition">
+                <a href="<?php echo e(route('contact')); ?>" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-primary transition">
                     Contact Us
                 </a>
             </div>
         </div>
-        <div class="mt-12 lg:mt-0 lg:ml-8">
-            <div class="flex items-center justify-center">
-                <i class="fas fa-book-open text-white text-9xl opacity-20"></i>
+        <div class="mt-12 lg:mt-0 lg:w-1/2 lg:pl-12">
+            <div class="relative">
+                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=800&h=600&fit=crop" 
+                     alt="Books Collection" 
+                     class="rounded-lg shadow-2xl w-full h-auto object-cover"
+                     onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22800%22 height=%22600%22%3E%3Crect fill=%22%23f3f4f6%22 width=%22800%22 height=%22600%22/%3E%3Ctext fill=%22%239ca3af%22 font-family=%22sans-serif%22 font-size=%2248%22 dy=%2210.5%22 font-weight=%22bold%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22%3EBooks%3C/text%3E%3C/svg%3E';">
             </div>
         </div>
     </div>
@@ -35,9 +38,12 @@
 <!-- Featured Books -->
 <div class="mb-16">
     <div class="flex items-center justify-between mb-8">
-        <h2 class="text-3xl font-bold text-gray-900">Featured Books</h2>
-        <a href="<?php echo e(route('books.index')); ?>" class="text-primary hover:text-indigo-700 font-medium transition">
-            View All <i class="fas fa-arrow-right ml-1"></i>
+        <div>
+            <h2 class="text-3xl font-bold text-gray-900">Featured Books</h2>
+            <p class="text-gray-600 mt-1">Discover our handpicked selection</p>
+        </div>
+        <a href="<?php echo e(route('books.index')); ?>" class="text-primary hover:text-indigo-700 font-medium transition flex items-center">
+            View All <i class="fas fa-arrow-right ml-2"></i>
         </a>
     </div>
     
@@ -95,41 +101,116 @@
 </div>
 
 <!-- Categories Section -->
-<div class="bg-gray-50 rounded-2xl p-8 mb-16">
-    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Browse by Category</h2>
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-16">
+    <h2 class="text-3xl font-bold text-gray-900 mb-2 text-center">Browse by Category</h2>
+    <p class="text-gray-600 text-center mb-8">Explore our wide range of book categories</p>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <a href="<?php echo e(route('books.index', ['category' => $category->id])); ?>" class="bg-white rounded-lg p-6 text-center hover:shadow-lg transition-all duration-300 border border-gray-200 hover:border-primary group">
-                <i class="fas fa-book text-3xl text-primary mb-3 group-hover:scale-110 transition-transform"></i>
-                <h3 class="font-bold text-gray-900 group-hover:text-primary transition"><?php echo e($category->name); ?></h3>
-                <p class="text-sm text-gray-500 mt-1"><?php echo e($category->books_count); ?> books</p>
+            <a href="<?php echo e(route('books.index', ['category' => $category->id])); ?>" class="group bg-gray-50 rounded-lg p-6 text-center hover:bg-primary hover:shadow-lg transition-all duration-300 border border-gray-200">
+                <i class="fas fa-book text-3xl text-primary group-hover:text-white mb-3 group-hover:scale-110 transition-transform"></i>
+                <h3 class="font-bold text-gray-900 group-hover:text-white transition"><?php echo e($category->name); ?></h3>
+                <p class="text-sm text-gray-500 group-hover:text-white group-hover:opacity-90 mt-1 transition"><?php echo e($category->books_count); ?> books</p>
             </a>
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </div>
 </div>
 
+<!-- Stats Section -->
+<div class="bg-gray-50 rounded-lg border border-gray-200 p-8 mb-16">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+        <div class="p-4">
+            <div class="text-4xl font-bold text-primary mb-2">1000+</div>
+            <div class="text-gray-600 font-medium">Books Available</div>
+        </div>
+        <div class="p-4">
+            <div class="text-4xl font-bold text-primary mb-2">500+</div>
+            <div class="text-gray-600 font-medium">Happy Customers</div>
+        </div>
+        <div class="p-4">
+            <div class="text-4xl font-bold text-primary mb-2">50+</div>
+            <div class="text-gray-600 font-medium">Cities Covered</div>
+        </div>
+        <div class="p-4">
+            <div class="text-4xl font-bold text-primary mb-2">24/7</div>
+            <div class="text-gray-600 font-medium">Customer Support</div>
+        </div>
+    </div>
+</div>
+
+<!-- Promotional Banner -->
+<div class="bg-primary rounded-lg shadow-lg overflow-hidden mb-16">
+    <div class="px-6 py-12 sm:px-12 lg:flex lg:items-center lg:justify-between">
+        <div class="lg:w-2/3">
+            <h2 class="text-3xl font-bold text-white mb-4">Special Offer!</h2>
+            <p class="text-xl text-white opacity-90 mb-6">
+                Get free delivery on orders above Rs 2,000. Limited time offer!
+            </p>
+            <a href="<?php echo e(route('books.index')); ?>" class="inline-flex items-center justify-center px-6 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-primary transition">
+                Shop Now
+                <i class="fas fa-arrow-right ml-2"></i>
+            </a>
+        </div>
+        <div class="mt-8 lg:mt-0 lg:w-1/3 flex justify-center">
+            <div class="relative">
+                <div class="w-32 h-32 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                    <i class="fas fa-gift text-white text-6xl"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Why Choose Us -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-    <div class="text-center p-6">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
-            <i class="fas fa-shipping-fast text-2xl text-primary"></i>
+<div class="mb-16">
+    <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Why Choose BookStore</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition">
+            <div class="mb-4">
+                <img src="https://images.unsplash.com/photo-1566576721346-d4a3b4eaeb55?w=400&h=250&fit=crop" 
+                     alt="Fast Delivery" 
+                     class="w-full h-40 object-cover rounded-lg"
+                     onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22250%22%3E%3Crect fill=%22%234F46E5%22 width=%22400%22 height=%22250%22/%3E%3Ctext fill=%22white%22 font-family=%22sans-serif%22 font-size=%2224%22 dy=%2210.5%22 font-weight=%22bold%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22%3EDelivery%3C/text%3E%3C/svg%3E';">
+            </div>
+            <div class="flex items-center mb-3">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-3">
+                    <i class="fas fa-shipping-fast text-xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Fast Delivery</h3>
+            </div>
+            <p class="text-gray-600">Quick and reliable delivery service across all major cities in Pakistan</p>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Fast Delivery</h3>
-        <p class="text-gray-600">Quick delivery across Pakistan</p>
-    </div>
-    <div class="text-center p-6">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
-            <i class="fas fa-shield-alt text-2xl text-primary"></i>
+
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition">
+            <div class="mb-4">
+                <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=400&h=250&fit=crop" 
+                     alt="Secure Payment" 
+                     class="w-full h-40 object-cover rounded-lg"
+                     onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22250%22%3E%3Crect fill=%22%234F46E5%22 width=%22400%22 height=%22250%22/%3E%3Ctext fill=%22white%22 font-family=%22sans-serif%22 font-size=%2224%22 dy=%2210.5%22 font-weight=%22bold%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22%3ESecure%3C/text%3E%3C/svg%3E';">
+            </div>
+            <div class="flex items-center mb-3">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-3">
+                    <i class="fas fa-shield-alt text-xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">Cash on Delivery</h3>
+            </div>
+            <p class="text-gray-600">Pay when you receive your order. Safe and secure transactions guaranteed</p>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">Secure Payment</h3>
-        <p class="text-gray-600">Safe and secure transactions</p>
-    </div>
-    <div class="text-center p-6">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
-            <i class="fas fa-headset text-2xl text-primary"></i>
+
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition">
+            <div class="mb-4">
+                <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=400&h=250&fit=crop" 
+                     alt="24/7 Support" 
+                     class="w-full h-40 object-cover rounded-lg"
+                     onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22250%22%3E%3Crect fill=%22%234F46E5%22 width=%22400%22 height=%22250%22/%3E%3Ctext fill=%22white%22 font-family=%22sans-serif%22 font-size=%2224%22 dy=%2210.5%22 font-weight=%22bold%22 x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22%3ESupport%3C/text%3E%3C/svg%3E';">
+            </div>
+            <div class="flex items-center mb-3">
+                <div class="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mr-3">
+                    <i class="fas fa-headset text-xl text-white"></i>
+                </div>
+                <h3 class="text-xl font-bold text-gray-900">24/7 Support</h3>
+            </div>
+            <p class="text-gray-600">Our dedicated customer support team is always ready to help you</p>
         </div>
-        <h3 class="text-xl font-bold text-gray-900 mb-2">24/7 Support</h3>
-        <p class="text-gray-600">Always here to help you</p>
     </div>
 </div>
 <?php $__env->stopSection(); ?>

@@ -64,8 +64,16 @@
                 <!-- Secondary Nav (Auth/Cart) -->
                 <div class="hidden sm:ml-6 sm:flex sm:items-center">
                     @auth
-                        <a href="{{ route('cart.index') }}" class="text-gray-500 hover:text-primary p-2 relative transition group">
+                        <a href="{{ route('cart.index') }}" class="text-gray-500 hover:text-primary p-2 relative transition group mr-3 cart-icon">
                             <i class="fas fa-shopping-cart text-lg group-hover:scale-110 transition-transform"></i>
+                            @php
+                                $cartItemsCount = auth()->user()->cart ? auth()->user()->cart->items()->sum('quantity') : 0;
+                            @endphp
+                            @if($cartItemsCount > 0)
+                                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center animate-pulse">
+                                    {{ $cartItemsCount > 9 ? '9+' : $cartItemsCount }}
+                                </span>
+                            @endif
                         </a>
                         
                         <!-- User Dropdown -->
@@ -145,9 +153,17 @@
                             <div class="text-base font-medium text-gray-800">{{ auth()->user()->name }}</div>
                             <div class="text-sm font-medium text-gray-500">{{ auth()->user()->email }}</div>
                         </div>
-                        <a href="{{ route('cart.index') }}" class="ml-auto flex-shrink-0 bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary">
+                        <a href="{{ route('cart.index') }}" class="ml-auto flex-shrink-0 bg-white p-1 rounded-full text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary relative">
                             <span class="sr-only">View cart</span>
                             <i class="fas fa-shopping-cart"></i>
+                            @php
+                                $cartItemsCount = auth()->user()->cart ? auth()->user()->cart->items()->sum('quantity') : 0;
+                            @endphp
+                            @if($cartItemsCount > 0)
+                                <span class="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                                    {{ $cartItemsCount > 9 ? '9+' : $cartItemsCount }}
+                                </span>
+                            @endif
                         </a>
                     </div>
                     <div class="mt-3 space-y-1">
@@ -175,34 +191,52 @@
     <main class="flex-grow">
         <!-- Toast Notifications -->
         @if(session('success'))
-            <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)" 
+            <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 5000)" 
                  x-transition:enter="transform ease-out duration-300 transition"
                  x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
                  x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0"
                  x-transition:leave="transition ease-in duration-100"
                  x-transition:leave-start="opacity-100"
                  x-transition:leave-end="opacity-0"
-                 class="fixed bottom-4 right-4 bg-emerald-500 text-white px-6 py-4 rounded-lg shadow-xl z-50 flex items-center gap-3" 
+                 class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-2xl z-50 flex items-center gap-3 max-w-md" 
                  style="display: none;">
-                <i class="fas fa-check-circle text-xl"></i>
-                <span class="font-medium">{{ session('success') }}</span>
-                <button @click="show = false" class="text-white hover:text-emerald-100 ml-2 focus:outline-none"><i class="fas fa-times"></i></button>
+                <div class="flex-shrink-0">
+                    <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-check-circle text-xl"></i>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <p class="font-semibold text-sm">Success!</p>
+                    <p class="text-sm opacity-90">{{ session('success') }}</p>
+                </div>
+                <button @click="show = false" class="text-white hover:text-green-100 ml-2 focus:outline-none">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
         @endif
 
         @if(session('error'))
-            <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 4000)" 
+            <div x-data="{ show: true }" x-show="show" x-init="setTimeout(() => show = false, 5000)" 
                  x-transition:enter="transform ease-out duration-300 transition"
                  x-transition:enter-start="translate-y-2 opacity-0 sm:translate-y-0 sm:translate-x-2"
                  x-transition:enter-end="translate-y-0 opacity-100 sm:translate-x-0"
                  x-transition:leave="transition ease-in duration-100"
                  x-transition:leave-start="opacity-100"
                  x-transition:leave-end="opacity-0"
-                 class="fixed bottom-4 right-4 bg-red-500 text-white px-6 py-4 rounded-lg shadow-xl z-50 flex items-center gap-3" 
+                 class="fixed bottom-4 right-4 bg-red-500 text-white px-6 py-4 rounded-lg shadow-2xl z-50 flex items-center gap-3 max-w-md" 
                  style="display: none;">
-                <i class="fas fa-exclamation-circle text-xl"></i>
-                <span class="font-medium">{{ session('error') }}</span>
-                <button @click="show = false" class="text-white hover:text-red-100 ml-2 focus:outline-none"><i class="fas fa-times"></i></button>
+                <div class="flex-shrink-0">
+                    <div class="w-10 h-10 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
+                        <i class="fas fa-exclamation-circle text-xl"></i>
+                    </div>
+                </div>
+                <div class="flex-1">
+                    <p class="font-semibold text-sm">Error!</p>
+                    <p class="text-sm opacity-90">{{ session('error') }}</p>
+                </div>
+                <button @click="show = false" class="text-white hover:text-red-100 ml-2 focus:outline-none">
+                    <i class="fas fa-times"></i>
+                </button>
             </div>
         @endif
 
@@ -257,6 +291,19 @@
         }
         .animate-fade-in-up {
             animation: fadeInUp 0.5s ease-out;
+        }
+        
+        @keyframes bounce {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+        }
+        
+        .cart-icon:hover {
+            animation: bounce 0.5s ease;
         }
     </style>
 </body>

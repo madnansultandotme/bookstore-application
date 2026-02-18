@@ -77,7 +77,7 @@
                             <a href="{{ route('cart.index') }}" class="text-sm font-medium text-gray-600 hover:text-gray-900 transition">
                                 <i class="fas fa-arrow-left mr-1"></i> Back to Cart
                             </a>
-                            <button type="submit" class="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition shadow-lg transform hover:-translate-y-0.5">
+                            <button type="submit" class="inline-flex items-center px-6 py-3 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-primary hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition shadow-lg">
                                 <i class="fas fa-check mr-2"></i> Place Order
                             </button>
                         </div>

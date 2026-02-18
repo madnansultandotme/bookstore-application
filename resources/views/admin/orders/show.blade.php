@@ -28,6 +28,20 @@
                             <p class="text-gray-900 font-medium">{{ $order->user->phone ?? 'N/A' }}</p>
                         </div>
                         <div>
+                            <p class="text-sm text-gray-500 mb-1">Payment Method</p>
+                            <p class="text-gray-900 font-medium">
+                                @if($order->payment_method === 'cash_on_delivery')
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        <i class="fas fa-money-bill-wave mr-1"></i> Cash on Delivery
+                                    </span>
+                                @else
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                        <i class="fas fa-credit-card mr-1"></i> Online Payment
+                                    </span>
+                                @endif
+                            </p>
+                        </div>
+                        <div class="md:col-span-2">
                             <p class="text-sm text-gray-500 mb-1">Shipping Address</p>
                             <p class="text-gray-900 bg-gray-50 p-3 rounded-md border border-gray-200 text-sm whitespace-pre-line">{{ $order->shipping_address }}</p>
                         </div>

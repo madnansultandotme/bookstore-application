@@ -34,7 +34,18 @@
                                 {{ ucfirst($order->status) }}
                             </span>
                         </div>
-                        <p class="mt-2 text-sm text-gray-500">Total Amount: <span class="font-bold text-green-600 text-lg ml-1">Rs {{ number_format($order->total_price, 2) }}</span></p>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Total Amount: <span class="font-bold text-green-600 text-lg ml-1">Rs {{ number_format($order->total_price, 2) }}</span>
+                        </p>
+                        <p class="mt-1 text-sm text-gray-500">
+                            Payment Method: <span class="font-semibold text-gray-700">
+                                @if($order->payment_method === 'cash_on_delivery')
+                                    <i class="fas fa-money-bill-wave text-green-600"></i> Cash on Delivery
+                                @else
+                                    <i class="fas fa-credit-card text-blue-600"></i> Online Payment
+                                @endif
+                            </span>
+                        </p>
                     </div>
                 </div>
 

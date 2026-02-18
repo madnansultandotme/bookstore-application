@@ -173,20 +173,20 @@ unset($__errorArgs, $__bag); ?>
                 </div>
             </div>
 
-            <div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-xl shadow-sm p-8 text-white">
+            <div class="bg-primary rounded-lg shadow-sm p-8 text-white">
                 <h3 class="text-xl font-bold mb-4">Follow Us</h3>
                 <p class="mb-6">Stay connected with us on social media for updates and special offers!</p>
                 <div class="flex space-x-4">
-                    <a href="#" class="flex items-center justify-center h-10 w-10 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+                    <a href="#" class="flex items-center justify-center h-10 w-10 rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition">
                         <i class="fab fa-facebook-f"></i>
                     </a>
-                    <a href="#" class="flex items-center justify-center h-10 w-10 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+                    <a href="#" class="flex items-center justify-center h-10 w-10 rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="#" class="flex items-center justify-center h-10 w-10 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+                    <a href="#" class="flex items-center justify-center h-10 w-10 rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition">
                         <i class="fab fa-instagram"></i>
                     </a>
-                    <a href="#" class="flex items-center justify-center h-10 w-10 rounded-full bg-white bg-opacity-20 hover:bg-opacity-30 transition">
+                    <a href="#" class="flex items-center justify-center h-10 w-10 rounded-lg bg-white bg-opacity-20 hover:bg-opacity-30 transition">
                         <i class="fab fa-whatsapp"></i>
                     </a>
                 </div>
