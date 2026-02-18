@@ -28,6 +28,20 @@
                             <p class="text-gray-900 font-medium"><?php echo e($order->user->phone ?? 'N/A'); ?></p>
                         </div>
                         <div>
+                            <p class="text-sm text-gray-500 mb-1">Payment Method</p>
+                            <p class="text-gray-900 font-medium">
+                                <?php if($order->payment_method === 'cash_on_delivery'): ?>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800">
+                                        <i class="fas fa-money-bill-wave mr-1"></i> Cash on Delivery
+                                    </span>
+                                <?php else: ?>
+                                    <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                                        <i class="fas fa-credit-card mr-1"></i> Online Payment
+                                    </span>
+                                <?php endif; ?>
+                            </p>
+                        </div>
+                        <div class="md:col-span-2">
                             <p class="text-sm text-gray-500 mb-1">Shipping Address</p>
                             <p class="text-gray-900 bg-gray-50 p-3 rounded-md border border-gray-200 text-sm whitespace-pre-line"><?php echo e($order->shipping_address); ?></p>
                         </div>
@@ -64,7 +78,7 @@
                                             </div>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                            $<?php echo e(number_format($item->price, 2)); ?>
+                                            Rs <?php echo e(number_format($item->price, 2)); ?>
 
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -72,7 +86,7 @@
 
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                            $<?php echo e(number_format($item->price * $item->quantity, 2)); ?>
+                                            Rs <?php echo e(number_format($item->price * $item->quantity, 2)); ?>
 
                                         </td>
                                     </tr>
@@ -81,7 +95,7 @@
                             <tfoot class="bg-gray-50">
                                 <tr>
                                     <td colspan="3" class="px-6 py-4 text-right text-sm font-medium text-gray-900">Total:</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">$<?php echo e(number_format($order->total_price, 2)); ?></td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">Rs <?php echo e(number_format($order->total_price, 2)); ?></td>
                                 </tr>
                             </tfoot>
                         </table>

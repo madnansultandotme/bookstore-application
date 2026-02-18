@@ -35,7 +35,18 @@
 
                             </span>
                         </div>
-                        <p class="mt-2 text-sm text-gray-500">Total Amount: <span class="font-bold text-green-600 text-lg ml-1">$<?php echo e(number_format($order->total_price, 2)); ?></span></p>
+                        <p class="mt-2 text-sm text-gray-500">
+                            Total Amount: <span class="font-bold text-green-600 text-lg ml-1">Rs <?php echo e(number_format($order->total_price, 2)); ?></span>
+                        </p>
+                        <p class="mt-1 text-sm text-gray-500">
+                            Payment Method: <span class="font-semibold text-gray-700">
+                                <?php if($order->payment_method === 'cash_on_delivery'): ?>
+                                    <i class="fas fa-money-bill-wave text-green-600"></i> Cash on Delivery
+                                <?php else: ?>
+                                    <i class="fas fa-credit-card text-blue-600"></i> Online Payment
+                                <?php endif; ?>
+                            </span>
+                        </p>
                     </div>
                 </div>
 
@@ -67,7 +78,7 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        $<?php echo e(number_format($item->price, 2)); ?>
+                                        Rs <?php echo e(number_format($item->price, 2)); ?>
 
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -75,7 +86,7 @@
 
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                        $<?php echo e(number_format($item->price * $item->quantity, 2)); ?>
+                                        Rs <?php echo e(number_format($item->price * $item->quantity, 2)); ?>
 
                                     </td>
                                 </tr>
@@ -84,7 +95,7 @@
                         <tfoot class="bg-gray-50">
                             <tr>
                                 <td colspan="3" class="px-6 py-4 text-right text-sm font-medium text-gray-900">Total:</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">$<?php echo e(number_format($order->total_price, 2)); ?></td>
+                                <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">Rs <?php echo e(number_format($order->total_price, 2)); ?></td>
                             </tr>
                         </tfoot>
                     </table>
