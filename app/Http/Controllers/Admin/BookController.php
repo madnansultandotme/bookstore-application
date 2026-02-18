@@ -63,7 +63,15 @@ class BookController extends Controller
         ]);
 
         if ($request->hasFile('image')) {
+            // Delete old image if exists
+            if ($book->image && \Storage::disk('public')->exists($book->image)) {
+                \Storage::disk('public')->delete($book->image);
+            }
+            
             $validated['image'] = $request->file('image')->store('books', 'public');
+        } else {
+            // Keep existing image if no new image uploaded
+            unset($validated['image']);
         }
 
         $book->update($validated);

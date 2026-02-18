@@ -943,3 +943,7 @@
 #34 C:/Users/adnan/Downloads/bookstore-application/artisan(12): Illuminate/Foundation/Console/Kernel->handle(Object(Symfony/Component/Console/Input/ArgvInput), Object(Symfony/Component/Console/Output/ConsoleOutput))
 #35 {main}
 "} 
+[2026-02-18 16:23:11] local.ERROR: Maximum execution time of 30 seconds exceeded {"exception":"[object] (Symfony\\Component\\ErrorHandler\\Error\\FatalError(code: 0): Maximum execution time of 30 seconds exceeded at C:/Users/adnan/Downloads/bookstore-application/vendor/composer/ClassLoader.php:429)
+[stacktrace]
+#0 {main}
+"} 

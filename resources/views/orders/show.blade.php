@@ -34,7 +34,7 @@
                                 {{ ucfirst($order->status) }}
                             </span>
                         </div>
-                        <p class="mt-2 text-sm text-gray-500">Total Amount: <span class="font-bold text-green-600 text-lg ml-1">${{ number_format($order->total_price, 2) }}</span></p>
+                        <p class="mt-2 text-sm text-gray-500">Total Amount: <span class="font-bold text-green-600 text-lg ml-1">Rs {{ number_format($order->total_price, 2) }}</span></p>
                     </div>
                 </div>
 
@@ -66,13 +66,13 @@
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        ${{ number_format($item->price, 2) }}
+                                        Rs {{ number_format($item->price, 2) }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         {{ $item->quantity }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                        ${{ number_format($item->price * $item->quantity, 2) }}
+                                        Rs {{ number_format($item->price * $item->quantity, 2) }}
                                     </td>
                                 </tr>
                             @endforeach
@@ -80,7 +80,7 @@
                         <tfoot class="bg-gray-50">
                             <tr>
                                 <td colspan="3" class="px-6 py-4 text-right text-sm font-medium text-gray-900">Total:</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">${{ number_format($order->total_price, 2) }}</td>
+                                <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">Rs {{ number_format($order->total_price, 2) }}</td>
                             </tr>
                         </tfoot>
                     </table>

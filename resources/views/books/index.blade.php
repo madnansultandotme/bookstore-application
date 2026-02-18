@@ -73,7 +73,7 @@
                         <p class="text-gray-500 text-sm mb-4 line-clamp-3 flex-grow">{{ $book->description }}</p>
                         
                         <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
-                            <span class="text-xl font-bold text-gray-900">${{ number_format($book->price, 2) }}</span>
+                            <span class="text-xl font-bold text-gray-900">Rs {{ number_format($book->price, 2) }}</span>
                             <div class="flex gap-2">
                                 <a href="{{ route('books.show', $book) }}" class="p-2 text-gray-400 hover:text-primary transition" title="View Details">
                                     <i class="fas fa-eye text-lg"></i>

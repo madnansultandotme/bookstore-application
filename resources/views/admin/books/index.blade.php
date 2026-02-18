@@ -42,7 +42,7 @@
                             </span>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">
-                            ${{ number_format($book->price, 2) }}
+                            Rs {{ number_format($book->price, 2) }}
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-sm">
                             <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium {{ $book->stock > 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800' }}">

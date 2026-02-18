@@ -55,7 +55,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                ${{ number_format($item->book->price, 2) }}
+                                Rs {{ number_format($item->book->price, 2) }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                 <form action="{{ route('cart.update', $item) }}" method="POST" class="flex items-center space-x-2">
@@ -67,7 +67,7 @@
                                 </form>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                ${{ number_format($item->book->price * $item->quantity, 2) }}
+                                Rs {{ number_format($item->book->price * $item->quantity, 2) }}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                 <form action="{{ route('cart.remove', $item) }}" method="POST" class="inline-block">
@@ -84,7 +84,7 @@
                 <tfoot class="bg-gray-50">
                     <tr>
                         <td colspan="3" class="px-6 py-4 text-right text-sm font-medium text-gray-900">Total:</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">${{ number_format($total, 2) }}</td>
+                        <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">Rs {{ number_format($total, 2) }}</td>
                         <td></td>
                     </tr>
                 </tfoot>

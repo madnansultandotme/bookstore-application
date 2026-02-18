@@ -43,12 +43,12 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
                     <div>
-                        <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+                        <label for="price" class="block text-sm font-medium text-gray-700">Price (PKR)</label>
                         <div class="relative mt-1 rounded-md shadow-sm">
                             <div class="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                                <span class="text-gray-500 sm:text-sm">$</span>
+                                <span class="text-gray-500 sm:text-sm">Rs</span>
                             </div>
-                            <input type="number" class="block w-full rounded-md border-gray-300 pl-7 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 @error('price') border-red-500 @enderror" 
+                            <input type="number" class="block w-full rounded-md border-gray-300 pl-12 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 @error('price') border-red-500 @enderror" 
                                    id="price" name="price" value="{{ old('price') }}" step="0.01" required>
                         </div>
                         @error('price')

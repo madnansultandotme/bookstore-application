@@ -71,7 +71,7 @@
                                         <p class="text-gray-500">x{{ $item->quantity }}</p>
                                     </div>
                                     <div class="text-right font-medium text-gray-900">
-                                        ${{ number_format($item->book->price * $item->quantity, 2) }}
+                                        Rs {{ number_format($item->book->price * $item->quantity, 2) }}
                                     </div>
                                 </li>
                             @endforeach
@@ -81,7 +81,7 @@
                     <div class="border-t border-gray-200 pt-6">
                         <div class="flex justify-between text-base font-bold text-gray-900">
                             <p>Total</p>
-                            <p>${{ number_format($cart->getTotalPrice(), 2) }}</p>
+                            <p>Rs {{ number_format($cart->getTotalPrice(), 2) }}</p>
                         </div>
                     </div>
                 </div>
