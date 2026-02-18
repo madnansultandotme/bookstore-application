@@ -46,8 +46,17 @@
                         </a>
                     </div>
                     <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                        <a href="<?php echo e(route('home')); ?>" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
+                            Home
+                        </a>
                         <a href="<?php echo e(route('books.index')); ?>" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
                             Books
+                        </a>
+                        <a href="<?php echo e(route('about')); ?>" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
+                            About
+                        </a>
+                        <a href="<?php echo e(route('contact')); ?>" class="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition">
+                            Contact
                         </a>
                     </div>
                 </div>
@@ -120,7 +129,10 @@
         <!-- Mobile menu -->
         <div class="sm:hidden" id="mobile-menu" x-show="open" style="display: none;" x-transition>
             <div class="pt-2 pb-3 space-y-1">
-                <a href="<?php echo e(route('books.index')); ?>" class="bg-indigo-50 border-primary text-primary block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Books</a>
+                <a href="<?php echo e(route('home')); ?>" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Home</a>
+                <a href="<?php echo e(route('books.index')); ?>" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Books</a>
+                <a href="<?php echo e(route('about')); ?>" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">About</a>
+                <a href="<?php echo e(route('contact')); ?>" class="border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700 block pl-3 pr-4 py-2 border-l-4 text-base font-medium">Contact</a>
             </div>
             <div class="pt-4 pb-3 border-t border-gray-200">
                 <?php if(auth()->guard()->check()): ?>
@@ -211,9 +223,10 @@
                 <div>
                     <h3 class="text-white text-lg font-bold mb-4">Quick Links</h3>
                     <ul class="space-y-2 text-sm">
+                        <li><a href="<?php echo e(route('home')); ?>" class="hover:text-white transition">Home</a></li>
                         <li><a href="<?php echo e(route('books.index')); ?>" class="hover:text-white transition">Browse Books</a></li>
-                        <li><a href="#" class="hover:text-white transition">About Us</a></li>
-                        <li><a href="#" class="hover:text-white transition">Contact</a></li>
+                        <li><a href="<?php echo e(route('about')); ?>" class="hover:text-white transition">About Us</a></li>
+                        <li><a href="<?php echo e(route('contact')); ?>" class="hover:text-white transition">Contact</a></li>
                     </ul>
                 </div>
                 <div>

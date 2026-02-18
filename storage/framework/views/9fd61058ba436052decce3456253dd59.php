@@ -45,7 +45,7 @@
 
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-semibold">
-                                $<?php echo e(number_format($order->total_price, 2)); ?>
+                                Rs <?php echo e(number_format($order->total_price, 2)); ?>
 
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">

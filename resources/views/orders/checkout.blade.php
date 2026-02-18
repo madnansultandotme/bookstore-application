@@ -18,6 +18,39 @@
                         @csrf
                         
                         <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-3">Payment Method</label>
+                            <div class="space-y-3">
+                                <div class="flex items-center p-4 border-2 border-primary bg-primary bg-opacity-5 rounded-lg">
+                                    <input id="cod" name="payment_method" type="radio" value="cash_on_delivery" checked
+                                        class="h-4 w-4 text-primary focus:ring-primary border-gray-300">
+                                    <label for="cod" class="ml-3 flex-1 cursor-pointer">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <span class="block text-sm font-medium text-gray-900">Cash on Delivery</span>
+                                                <span class="block text-sm text-gray-500">Pay when you receive your order</span>
+                                            </div>
+                                            <i class="fas fa-money-bill-wave text-2xl text-primary"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                                
+                                <div class="flex items-center p-4 border-2 border-gray-200 rounded-lg opacity-50 cursor-not-allowed">
+                                    <input id="online" name="payment_method" type="radio" value="online_payment" disabled
+                                        class="h-4 w-4 text-gray-400 border-gray-300">
+                                    <label for="online" class="ml-3 flex-1">
+                                        <div class="flex items-center justify-between">
+                                            <div>
+                                                <span class="block text-sm font-medium text-gray-500">Online Payment</span>
+                                                <span class="block text-sm text-gray-400">Coming Soon</span>
+                                            </div>
+                                            <i class="fas fa-credit-card text-2xl text-gray-400"></i>
+                                        </div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-6">
                             <label for="shipping_address" class="block text-sm font-medium text-gray-700 mb-1">Shipping Address</label>
                             <textarea id="shipping_address" name="shipping_address" rows="4" required
                                 class="w-full rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring focus:ring-primary focus:ring-opacity-50 @error('shipping_address') border-red-500 @enderror">{{ old('shipping_address', auth()->user()->address) }}</textarea>

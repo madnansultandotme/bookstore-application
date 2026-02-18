@@ -4,22 +4,22 @@
 
 @section('content')
 <!-- Hero Section -->
-<div class="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-2xl shadow-2xl overflow-hidden mb-12">
+<div class="bg-primary rounded-lg shadow-lg overflow-hidden mb-12">
     <div class="px-6 py-16 sm:px-12 sm:py-24 lg:flex lg:items-center lg:justify-between">
         <div class="lg:w-0 lg:flex-1">
             <h1 class="text-4xl font-extrabold tracking-tight text-white sm:text-5xl md:text-6xl">
                 <span class="block">Welcome to</span>
-                <span class="block text-indigo-200">Pakistan's BookStore</span>
+                <span class="block">Pakistan's BookStore</span>
             </h1>
-            <p class="mt-5 text-xl text-indigo-100 max-w-3xl">
+            <p class="mt-5 text-xl text-white opacity-90 max-w-3xl">
                 Discover thousands of books at amazing prices. From bestsellers to hidden gems, find your next great read today!
             </p>
             <div class="mt-8 flex flex-col sm:flex-row gap-4">
-                <a href="{{ route('books.index') }}" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 shadow-lg hover:shadow-xl transition transform hover:-translate-y-0.5">
+                <a href="{{ route('books.index') }}" class="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-primary bg-white hover:bg-gray-100 shadow-lg transition">
                     Browse Books
                     <i class="fas fa-arrow-right ml-2"></i>
                 </a>
-                <a href="{{ route('contact') }}" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-indigo-600 transition">
+                <a href="{{ route('contact') }}" class="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-md text-white hover:bg-white hover:text-primary transition">
                     Contact Us
                 </a>
             </div>
@@ -95,7 +95,7 @@
 </div>
 
 <!-- Categories Section -->
-<div class="bg-gray-50 rounded-2xl p-8 mb-16">
+<div class="bg-gray-50 rounded-lg p-8 mb-16 border border-gray-200">
     <h2 class="text-3xl font-bold text-gray-900 mb-8 text-center">Browse by Category</h2>
     <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         @foreach($categories as $category)
@@ -110,23 +110,23 @@
 
 <!-- Why Choose Us -->
 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-    <div class="text-center p-6">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
-            <i class="fas fa-shipping-fast text-2xl text-primary"></i>
+    <div class="text-center p-6 bg-white rounded-lg border border-gray-200">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-lg mb-4">
+            <i class="fas fa-shipping-fast text-2xl text-white"></i>
         </div>
         <h3 class="text-xl font-bold text-gray-900 mb-2">Fast Delivery</h3>
         <p class="text-gray-600">Quick delivery across Pakistan</p>
     </div>
-    <div class="text-center p-6">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
-            <i class="fas fa-shield-alt text-2xl text-primary"></i>
+    <div class="text-center p-6 bg-white rounded-lg border border-gray-200">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-lg mb-4">
+            <i class="fas fa-shield-alt text-2xl text-white"></i>
         </div>
         <h3 class="text-xl font-bold text-gray-900 mb-2">Secure Payment</h3>
         <p class="text-gray-600">Safe and secure transactions</p>
     </div>
-    <div class="text-center p-6">
-        <div class="inline-flex items-center justify-center w-16 h-16 bg-indigo-100 rounded-full mb-4">
-            <i class="fas fa-headset text-2xl text-primary"></i>
+    <div class="text-center p-6 bg-white rounded-lg border border-gray-200">
+        <div class="inline-flex items-center justify-center w-16 h-16 bg-primary rounded-lg mb-4">
+            <i class="fas fa-headset text-2xl text-white"></i>
         </div>
         <h3 class="text-xl font-bold text-gray-900 mb-2">24/7 Support</h3>
         <p class="text-gray-600">Always here to help you</p>

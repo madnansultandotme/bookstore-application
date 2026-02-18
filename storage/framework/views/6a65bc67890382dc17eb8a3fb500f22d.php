@@ -55,7 +55,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                $<?php echo e(number_format($item->book->price, 2)); ?>
+                                Rs <?php echo e(number_format($item->book->price, 2)); ?>
 
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
@@ -68,7 +68,7 @@
                                 </form>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                                $<?php echo e(number_format($item->book->price * $item->quantity, 2)); ?>
+                                Rs <?php echo e(number_format($item->book->price * $item->quantity, 2)); ?>
 
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
@@ -86,7 +86,7 @@
                 <tfoot class="bg-gray-50">
                     <tr>
                         <td colspan="3" class="px-6 py-4 text-right text-sm font-medium text-gray-900">Total:</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">$<?php echo e(number_format($total, 2)); ?></td>
+                        <td class="px-6 py-4 whitespace-nowrap text-lg font-bold text-gray-900">Rs <?php echo e(number_format($total, 2)); ?></td>
                         <td></td>
                     </tr>
                 </tfoot>

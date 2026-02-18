@@ -85,7 +85,7 @@ unset($__errorArgs, $__bag); ?>
                                         <p class="text-gray-500">x<?php echo e($item->quantity); ?></p>
                                     </div>
                                     <div class="text-right font-medium text-gray-900">
-                                        $<?php echo e(number_format($item->book->price * $item->quantity, 2)); ?>
+                                        Rs <?php echo e(number_format($item->book->price * $item->quantity, 2)); ?>
 
                                     </div>
                                 </li>
@@ -96,7 +96,7 @@ unset($__errorArgs, $__bag); ?>
                     <div class="border-t border-gray-200 pt-6">
                         <div class="flex justify-between text-base font-bold text-gray-900">
                             <p>Total</p>
-                            <p>$<?php echo e(number_format($cart->getTotalPrice(), 2)); ?></p>
+                            <p>Rs <?php echo e(number_format($cart->getTotalPrice(), 2)); ?></p>
                         </div>
                     </div>
                 </div>

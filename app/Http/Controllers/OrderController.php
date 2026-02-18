@@ -40,6 +40,7 @@ class OrderController extends Controller
     {
         $request->validate([
             'shipping_address' => 'required|string',
+            'payment_method' => 'required|in:cash_on_delivery,online_payment',
         ]);
 
         $cart = auth()->user()->cart;
@@ -55,6 +56,7 @@ class OrderController extends Controller
                 'total_price' => $cart->getTotalPrice(),
                 'status' => 'pending',
                 'shipping_address' => $request->shipping_address,
+                'payment_method' => $request->payment_method,
             ]);
 
             foreach ($cartItems as $item) {
